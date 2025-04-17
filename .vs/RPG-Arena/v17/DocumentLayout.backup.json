@@ -1,0 +1,292 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4659EB53-EDBF-4100-BE52-F16F228F7E69}|RPGArena.Backend\\RPGArena.Backend.csproj|f:\\projets-jeux\\br-rpg-v2\\rpg-arena-backend\\new\\rpg-arena\\rpgarena.backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4659EB53-EDBF-4100-BE52-F16F228F7E69}|RPGArena.Backend\\RPGArena.Backend.csproj|solutionrelative:rpgarena.backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6FB26F6-57AB-4AD3-82D4-DC89DFE6C9D8}|RPGArena.CombatEngine\\RPGArena.CombatEngine.csproj|f:\\projets-jeux\\br-rpg-v2\\rpg-arena-backend\\new\\rpg-arena\\rpgarena.combatengine\\characters\\pretre.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6FB26F6-57AB-4AD3-82D4-DC89DFE6C9D8}|RPGArena.CombatEngine\\RPGArena.CombatEngine.csproj|solutionrelative:rpgarena.combatengine\\characters\\pretre.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6FB26F6-57AB-4AD3-82D4-DC89DFE6C9D8}|RPGArena.CombatEngine\\RPGArena.CombatEngine.csproj|f:\\projets-jeux\\br-rpg-v2\\rpg-arena-backend\\new\\rpg-arena\\rpgarena.combatengine\\characters\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6FB26F6-57AB-4AD3-82D4-DC89DFE6C9D8}|RPGArena.CombatEngine\\RPGArena.CombatEngine.csproj|solutionrelative:rpgarena.combatengine\\characters\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6FB26F6-57AB-4AD3-82D4-DC89DFE6C9D8}|RPGArena.CombatEngine\\RPGArena.CombatEngine.csproj|f:\\projets-jeux\\br-rpg-v2\\rpg-arena-backend\\new\\rpg-arena\\rpgarena.combatengine\\tests\\testbattlescenario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6FB26F6-57AB-4AD3-82D4-DC89DFE6C9D8}|RPGArena.CombatEngine\\RPGArena.CombatEngine.csproj|solutionrelative:rpgarena.combatengine\\tests\\testbattlescenario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6FB26F6-57AB-4AD3-82D4-DC89DFE6C9D8}|RPGArena.CombatEngine\\RPGArena.CombatEngine.csproj|f:\\projets-jeux\\br-rpg-v2\\rpg-arena-backend\\new\\rpg-arena\\rpgarena.combatengine\\skills\\iskill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6FB26F6-57AB-4AD3-82D4-DC89DFE6C9D8}|RPGArena.CombatEngine\\RPGArena.CombatEngine.csproj|solutionrelative:rpgarena.combatengine\\skills\\iskill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6FB26F6-57AB-4AD3-82D4-DC89DFE6C9D8}|RPGArena.CombatEngine\\RPGArena.CombatEngine.csproj|f:\\projets-jeux\\br-rpg-v2\\rpg-arena-backend\\new\\rpg-arena\\rpgarena.combatengine\\core\\battlearena.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6FB26F6-57AB-4AD3-82D4-DC89DFE6C9D8}|RPGArena.CombatEngine\\RPGArena.CombatEngine.csproj|solutionrelative:rpgarena.combatengine\\core\\battlearena.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6FB26F6-57AB-4AD3-82D4-DC89DFE6C9D8}|RPGArena.CombatEngine\\RPGArena.CombatEngine.csproj|f:\\projets-jeux\\br-rpg-v2\\rpg-arena-backend\\new\\rpg-arena\\rpgarena.combatengine\\services\\noopfightservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6FB26F6-57AB-4AD3-82D4-DC89DFE6C9D8}|RPGArena.CombatEngine\\RPGArena.CombatEngine.csproj|solutionrelative:rpgarena.combatengine\\services\\noopfightservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6FB26F6-57AB-4AD3-82D4-DC89DFE6C9D8}|RPGArena.CombatEngine\\RPGArena.CombatEngine.csproj|f:\\projets-jeux\\br-rpg-v2\\rpg-arena-backend\\new\\rpg-arena\\rpgarena.combatengine\\services\\fakefightservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6FB26F6-57AB-4AD3-82D4-DC89DFE6C9D8}|RPGArena.CombatEngine\\RPGArena.CombatEngine.csproj|solutionrelative:rpgarena.combatengine\\services\\fakefightservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6FB26F6-57AB-4AD3-82D4-DC89DFE6C9D8}|RPGArena.CombatEngine\\RPGArena.CombatEngine.csproj|f:\\projets-jeux\\br-rpg-v2\\rpg-arena-backend\\new\\rpg-arena\\rpgarena.combatengine\\states\\empoisonne.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6FB26F6-57AB-4AD3-82D4-DC89DFE6C9D8}|RPGArena.CombatEngine\\RPGArena.CombatEngine.csproj|solutionrelative:rpgarena.combatengine\\states\\empoisonne.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6FB26F6-57AB-4AD3-82D4-DC89DFE6C9D8}|RPGArena.CombatEngine\\RPGArena.CombatEngine.csproj|f:\\projets-jeux\\br-rpg-v2\\rpg-arena-backend\\new\\rpg-arena\\rpgarena.combatengine\\states\\acide.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6FB26F6-57AB-4AD3-82D4-DC89DFE6C9D8}|RPGArena.CombatEngine\\RPGArena.CombatEngine.csproj|solutionrelative:rpgarena.combatengine\\states\\acide.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6FB26F6-57AB-4AD3-82D4-DC89DFE6C9D8}|RPGArena.CombatEngine\\RPGArena.CombatEngine.csproj|f:\\projets-jeux\\br-rpg-v2\\rpg-arena-backend\\new\\rpg-arena\\rpgarena.combatengine\\states\\state.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6FB26F6-57AB-4AD3-82D4-DC89DFE6C9D8}|RPGArena.CombatEngine\\RPGArena.CombatEngine.csproj|solutionrelative:rpgarena.combatengine\\states\\state.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6FB26F6-57AB-4AD3-82D4-DC89DFE6C9D8}|RPGArena.CombatEngine\\RPGArena.CombatEngine.csproj|f:\\projets-jeux\\br-rpg-v2\\rpg-arena-backend\\new\\rpg-arena\\rpgarena.combatengine\\states\\istate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6FB26F6-57AB-4AD3-82D4-DC89DFE6C9D8}|RPGArena.CombatEngine\\RPGArena.CombatEngine.csproj|solutionrelative:rpgarena.combatengine\\states\\istate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6FB26F6-57AB-4AD3-82D4-DC89DFE6C9D8}|RPGArena.CombatEngine\\RPGArena.CombatEngine.csproj|f:\\projets-jeux\\br-rpg-v2\\rpg-arena-backend\\new\\rpg-arena\\rpgarena.combatengine\\skills\\mangemort.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6FB26F6-57AB-4AD3-82D4-DC89DFE6C9D8}|RPGArena.CombatEngine\\RPGArena.CombatEngine.csproj|solutionrelative:rpgarena.combatengine\\skills\\mangemort.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6FB26F6-57AB-4AD3-82D4-DC89DFE6C9D8}|RPGArena.CombatEngine\\RPGArena.CombatEngine.csproj|f:\\projets-jeux\\br-rpg-v2\\rpg-arena-backend\\new\\rpg-arena\\rpgarena.combatengine\\skills\\skill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6FB26F6-57AB-4AD3-82D4-DC89DFE6C9D8}|RPGArena.CombatEngine\\RPGArena.CombatEngine.csproj|solutionrelative:rpgarena.combatengine\\skills\\skill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6FB26F6-57AB-4AD3-82D4-DC89DFE6C9D8}|RPGArena.CombatEngine\\RPGArena.CombatEngine.csproj|f:\\projets-jeux\\br-rpg-v2\\rpg-arena-backend\\new\\rpg-arena\\rpgarena.combatengine\\skills\\attaquebase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6FB26F6-57AB-4AD3-82D4-DC89DFE6C9D8}|RPGArena.CombatEngine\\RPGArena.CombatEngine.csproj|solutionrelative:rpgarena.combatengine\\skills\\attaquebase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6FB26F6-57AB-4AD3-82D4-DC89DFE6C9D8}|RPGArena.CombatEngine\\RPGArena.CombatEngine.csproj|f:\\projets-jeux\\br-rpg-v2\\rpg-arena-backend\\new\\rpg-arena\\rpgarena.combatengine\\skills\\soin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6FB26F6-57AB-4AD3-82D4-DC89DFE6C9D8}|RPGArena.CombatEngine\\RPGArena.CombatEngine.csproj|solutionrelative:rpgarena.combatengine\\skills\\soin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 512,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\RPGArena.Backend\\Program.cs",
+              "RelativeDocumentMoniker": "RPGArena.Backend\\Program.cs",
+              "ToolTip": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\RPGArena.Backend\\Program.cs",
+              "RelativeToolTip": "RPGArena.Backend\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T20:40:52.715Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ISkill.cs",
+              "DocumentMoniker": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\RPGArena.CombatEngine\\Skills\\ISkill.cs",
+              "RelativeDocumentMoniker": "RPGArena.CombatEngine\\Skills\\ISkill.cs",
+              "ToolTip": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\RPGArena.CombatEngine\\Skills\\ISkill.cs",
+              "RelativeToolTip": "RPGArena.CombatEngine\\Skills\\ISkill.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T20:30:24.723Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Character.cs",
+              "DocumentMoniker": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\RPGArena.CombatEngine\\Characters\\Character.cs",
+              "RelativeDocumentMoniker": "RPGArena.CombatEngine\\Characters\\Character.cs",
+              "ToolTip": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\RPGArena.CombatEngine\\Characters\\Character.cs",
+              "RelativeToolTip": "RPGArena.CombatEngine\\Characters\\Character.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAnwD4AAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T20:28:26.922Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Pretre.cs",
+              "DocumentMoniker": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\RPGArena.CombatEngine\\Characters\\Pretre.cs",
+              "RelativeDocumentMoniker": "RPGArena.CombatEngine\\Characters\\Pretre.cs",
+              "ToolTip": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\RPGArena.CombatEngine\\Characters\\Pretre.cs",
+              "RelativeToolTip": "RPGArena.CombatEngine\\Characters\\Pretre.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAADIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T20:26:18.715Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BattleArena.cs",
+              "DocumentMoniker": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\RPGArena.CombatEngine\\Core\\BattleArena.cs",
+              "RelativeDocumentMoniker": "RPGArena.CombatEngine\\Core\\BattleArena.cs",
+              "ToolTip": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\RPGArena.CombatEngine\\Core\\BattleArena.cs",
+              "RelativeToolTip": "RPGArena.CombatEngine\\Core\\BattleArena.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T20:24:58.845Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TestBattleScenario.cs",
+              "DocumentMoniker": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\RPGArena.CombatEngine\\Tests\\TestBattleScenario.cs",
+              "RelativeDocumentMoniker": "RPGArena.CombatEngine\\Tests\\TestBattleScenario.cs",
+              "ToolTip": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\RPGArena.CombatEngine\\Tests\\TestBattleScenario.cs",
+              "RelativeToolTip": "RPGArena.CombatEngine\\Tests\\TestBattleScenario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T20:23:30.481Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "NoOpFightService.cs",
+              "DocumentMoniker": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\RPGArena.CombatEngine\\Services\\NoOpFightService.cs",
+              "RelativeDocumentMoniker": "RPGArena.CombatEngine\\Services\\NoOpFightService.cs",
+              "ToolTip": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\RPGArena.CombatEngine\\Services\\NoOpFightService.cs",
+              "RelativeToolTip": "RPGArena.CombatEngine\\Services\\NoOpFightService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T20:19:21.479Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "FakeFightService.cs",
+              "DocumentMoniker": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\RPGArena.CombatEngine\\Services\\FakeFightService.cs",
+              "RelativeDocumentMoniker": "RPGArena.CombatEngine\\Services\\FakeFightService.cs",
+              "ToolTip": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\RPGArena.CombatEngine\\Services\\FakeFightService.cs",
+              "RelativeToolTip": "RPGArena.CombatEngine\\Services\\FakeFightService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T20:16:53.49Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Acide.cs",
+              "DocumentMoniker": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\RPGArena.CombatEngine\\States\\Acide.cs",
+              "RelativeDocumentMoniker": "RPGArena.CombatEngine\\States\\Acide.cs",
+              "ToolTip": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\RPGArena.CombatEngine\\States\\Acide.cs",
+              "RelativeToolTip": "RPGArena.CombatEngine\\States\\Acide.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAEwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T20:08:20.027Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Empoisonne.cs",
+              "DocumentMoniker": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\RPGArena.CombatEngine\\States\\Empoisonne.cs",
+              "RelativeDocumentMoniker": "RPGArena.CombatEngine\\States\\Empoisonne.cs",
+              "ToolTip": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\RPGArena.CombatEngine\\States\\Empoisonne.cs",
+              "RelativeToolTip": "RPGArena.CombatEngine\\States\\Empoisonne.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwBIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T20:00:36.342Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IState.cs",
+              "DocumentMoniker": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\RPGArena.CombatEngine\\States\\IState.cs",
+              "RelativeDocumentMoniker": "RPGArena.CombatEngine\\States\\IState.cs",
+              "ToolTip": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\RPGArena.CombatEngine\\States\\IState.cs",
+              "RelativeToolTip": "RPGArena.CombatEngine\\States\\IState.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T19:56:50.18Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "State.cs",
+              "DocumentMoniker": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\RPGArena.CombatEngine\\States\\State.cs",
+              "RelativeDocumentMoniker": "RPGArena.CombatEngine\\States\\State.cs",
+              "ToolTip": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\RPGArena.CombatEngine\\States\\State.cs",
+              "RelativeToolTip": "RPGArena.CombatEngine\\States\\State.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAmwCoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T19:50:30.534Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "MangeMort.cs",
+              "DocumentMoniker": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\RPGArena.CombatEngine\\Skills\\MangeMort.cs",
+              "RelativeDocumentMoniker": "RPGArena.CombatEngine\\Skills\\MangeMort.cs",
+              "ToolTip": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\RPGArena.CombatEngine\\Skills\\MangeMort.cs",
+              "RelativeToolTip": "RPGArena.CombatEngine\\Skills\\MangeMort.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACYAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T19:22:43.618Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Skill.cs",
+              "DocumentMoniker": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\RPGArena.CombatEngine\\Skills\\Skill.cs",
+              "RelativeDocumentMoniker": "RPGArena.CombatEngine\\Skills\\Skill.cs",
+              "ToolTip": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\RPGArena.CombatEngine\\Skills\\Skill.cs",
+              "RelativeToolTip": "RPGArena.CombatEngine\\Skills\\Skill.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAsAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T19:20:21.971Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AttaqueBase.cs",
+              "DocumentMoniker": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\RPGArena.CombatEngine\\Skills\\AttaqueBase.cs",
+              "RelativeDocumentMoniker": "RPGArena.CombatEngine\\Skills\\AttaqueBase.cs",
+              "ToolTip": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\RPGArena.CombatEngine\\Skills\\AttaqueBase.cs",
+              "RelativeToolTip": "RPGArena.CombatEngine\\Skills\\AttaqueBase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T19:13:19.682Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Soin.cs",
+              "DocumentMoniker": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\RPGArena.CombatEngine\\Skills\\Soin.cs",
+              "RelativeDocumentMoniker": "RPGArena.CombatEngine\\Skills\\Soin.cs",
+              "ToolTip": "F:\\Projets-Jeux\\BR-RPG-V2\\RPG-Arena-Backend\\New\\RPG-Arena\\RPGArena.CombatEngine\\Skills\\Soin.cs",
+              "RelativeToolTip": "RPGArena.CombatEngine\\Skills\\Soin.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAA9wA8AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T17:10:01.915Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

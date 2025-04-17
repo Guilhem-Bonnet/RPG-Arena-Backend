@@ -1,0 +1,6 @@
+F:\Projets-Jeux\BR-RPG-V2\RPG-Arena-Backend\New\RPG-Arena\RPGArena.Backend\obj\Debug\net9.0\RPGArena.Backend.csproj.AssemblyReference.cache
+F:\Projets-Jeux\BR-RPG-V2\RPG-Arena-Backend\New\RPG-Arena\RPGArena.Backend\obj\Debug\net9.0\RPGArena.Backend.GeneratedMSBuildEditorConfig.editorconfig
+F:\Projets-Jeux\BR-RPG-V2\RPG-Arena-Backend\New\RPG-Arena\RPGArena.Backend\obj\Debug\net9.0\RPGArena.Backend.AssemblyInfoInputs.cache
+F:\Projets-Jeux\BR-RPG-V2\RPG-Arena-Backend\New\RPG-Arena\RPGArena.Backend\obj\Debug\net9.0\RPGArena.Backend.AssemblyInfo.cs
+F:\Projets-Jeux\BR-RPG-V2\RPG-Arena-Backend\New\RPG-Arena\RPGArena.Backend\obj\Debug\net9.0\RPGArena.Backend.csproj.CoreCompileInputs.cache
+F:\Projets-Jeux\BR-RPG-V2\RPG-Arena-Backend\New\RPG-Arena\RPGArena.Backend\obj\Debug\net9.0\RPGArena.Backend.MvcApplicationPartsAssemblyInfo.cache

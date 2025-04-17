@@ -1,0 +1,2 @@
+F:\Projets-Jeux\BR-RPG-V2\RPG-Arena-Backend\New\RPG-Arena\RPGArena.CombatEngine\obj\Debug\net9.0\RPGArena.CombatEngine.GeneratedMSBuildEditorConfig.editorconfig
+F:\Projets-Jeux\BR-RPG-V2\RPG-Arena-Backend\New\RPG-Arena\RPGArena.CombatEngine\obj\Debug\net9.0\RPGArena.CombatEngine.csproj.CoreCompileInputs.cache
