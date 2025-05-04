@@ -1,14 +1,20 @@
-﻿// RPGArena.CombatEngine/Skills/Ressucite.cs
-using System.Threading.Tasks;
+﻿// RPGArena.CombatEngine/ISkills/Ressucite.cs
 using RPGArena.CombatEngine.Core;
 using RPGArena.CombatEngine.Enums;
 using RPGArena.CombatEngine.Logging;
+using RPGArena.CombatEngine.Skills;
 using ILogger = RPGArena.CombatEngine.Logging.ILogger;
+using RPGArena.CombatEngine.Characters;
+using RPGArena.CombatEngine.States;
 
-namespace RPGArena.CombatEngine.Skills;
+namespace RPGArena.CombatEngine.ISkills;
 
 public class Ressucite : Skill
 {
+    public override string Name => "Ressusciter";
+    public override float BaseCooldown { get; set; } = 10f;
+    public override TypeAttack Type { get; set; } = TypeAttack.Sacre;
+
     private readonly ILogger _logger;
 
     public Ressucite(ILogger logger)
@@ -16,29 +22,39 @@ public class Ressucite : Skill
         _logger = logger;
     }
 
-    public override string Name => "Mangeur de cadavre";
-    public override float BaseCooldown { get; set; } = 10;
-    public override TypeAttack Type { get; set; } = TypeAttack.Sacre;
-
     public override async Task Use(Character lanceur, Character cible)
     {
-        if (cible.IsDead)
+        if (!IsReady)
         {
-            _logger.Log($"🧟 {lanceur.Name} ressuscite {cible.Name} !");
-
-            // Restaure l'état original et les PV
-            cible = cible.etatOriginal; // WIP
-            cible.Life = 100;
-
-            _logger.Log($"✨ {cible.Name} revient à la vie avec {cible.Life} points de vie !");
-
-            ReduceRecharge();
-        }
-        else
-        {
-            _logger.Log($"❌ {cible.Name} est encore en vie, la résurrection est impossible.");
+            _logger.Log($"❌ {Name} n'est pas prête.");
+            return;
         }
 
-        await Task.CompletedTask;
+        if (!cible.IsDead)
+        {
+            _logger.Log($"⚠️ {cible.Name} est encore en vie. Impossible de ressusciter un être vivant.");
+            return;
+        }
+
+        if (cible is Illusion)
+        {
+            _logger.Log($"🚫 {Name} ne peut pas être utilisé sur une illusion.");
+            return;
+        }
+
+        if (cible.OriginalCharacter == null)
+        {
+            _logger.Log($"❌ {cible.Name} ne possède pas d'état original à restaurer.");
+            return;
+        }
+
+        var resurrected = cible.OriginalCharacter;
+
+        resurrected.Life = resurrected.MaxLife / 2;
+        resurrected.RemoveState<IsEaten>();
+        lanceur.Arena.AddCharacter(resurrected);
+
+        _logger.Log($"✨ {lanceur.Name} ressuscite {resurrected.Name} avec {resurrected.Life} points de vie !");
+        Cooldown = BaseCooldown;
     }
 }

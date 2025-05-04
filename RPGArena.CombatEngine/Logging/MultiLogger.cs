@@ -1,5 +1,11 @@
 ﻿// RPGArena.CombatEngine/Logging/MultiLogger.cs
 using System.Collections.Generic;
+/*
+/// <summary>
+/// MultiLogger permet de diffuser un même message de log à plusieurs destinations (Console, WebSocket, Mongo...).
+/// Il implémente ILogger et encapsule plusieurs loggers internes.
+/// </summary>
+*/
 
 namespace RPGArena.CombatEngine.Logging
 {

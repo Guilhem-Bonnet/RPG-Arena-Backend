@@ -1,5 +1,4 @@
 ﻿using RPGArena.CombatEngine.Core;
-using RPGArena.CombatEngine.Decorateur;
 using RPGArena.CombatEngine.Enums;
 using RPGArena.CombatEngine.Logging;
 using RPGArena.CombatEngine.States;

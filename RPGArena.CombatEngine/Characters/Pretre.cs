@@ -18,10 +18,10 @@ public class Pretre : Character
 
     public override void AttackBase(Character target)
     {
-        throw new NotImplementedException();
+        BasicAttack(target);
     }
 
-    public override async Task ExecuteStrategy()
+    public override async Task PerformActionAsync()
     {
         var target = ChooseTarget();
 

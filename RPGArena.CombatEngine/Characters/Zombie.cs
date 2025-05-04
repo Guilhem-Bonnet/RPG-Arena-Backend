@@ -21,10 +21,10 @@ public class Zombie : Character
 
     public override void AttackBase(Character target)
     {
-        throw new NotImplementedException();
+        BasicAttack(target);
     }
 
-    public override async Task ExecuteStrategy()
+    public override async Task PerformActionAsync()
     {
         var skillMangeMort = _skills.FirstOrDefault(c => c is MangeMort && c.IsReady);
         var skillAttack = _skills.FirstOrDefault(c => c is AttackBase && c.IsReady);

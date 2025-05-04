@@ -1,4 +1,6 @@
 ﻿// RPGArena.CombatEngine/ISkills/Skill.cs
+
+using RPGArena.CombatEngine.Characters;
 using RPGArena.CombatEngine.Core;
 using RPGArena.CombatEngine.Enums;
 
@@ -14,6 +16,8 @@ public abstract class Skill : ISkill
     public virtual bool IsReady => Cooldown <= 0;
 
     public abstract Task Use(Character lanceur, Character cible);
+
+    public Task Use(ICharacter lanceur, ICharacter cible)=> Use((Character)lanceur, (Character)cible);
 
     public virtual void ReduceRecharge()
     {

@@ -3,7 +3,12 @@ using ILogger = RPGArena.CombatEngine.Logging.ILogger;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using RPGArena.CombatEngine.Logging;
-
+/*
+*<summary>
+*   Logger persistant qui enregistre les logs du combat dans une base MongoDB.
+*   Utile pour audit, historique, analyse statistique ou visualisation future des combats.
+*</summary>
+*/
 namespace RPGArena.Backend.Loggers;
 
 public class MongoDbLogger : ILogger
@@ -12,7 +17,7 @@ public class MongoDbLogger : ILogger
 
     public MongoDbLogger()
     {
-        var client = new MongoClient("mongodb://localhost:27017"); // à adapter si besoin WIP
+        var client = new MongoClient("mongodb://localhost:27017"); // ï¿½ adapter si besoin WIP
         var database = client.GetDatabase("rpgarena");
         _collection = database.GetCollection<BsonDocument>("combat_logs");
     }

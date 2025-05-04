@@ -21,8 +21,10 @@ namespace RPGArena.CombatEngine.Characters
         TypePersonnage TypeDuPersonnage { get; set; }
         void AttackBase(Character target);
         Task Strategie();
-        Task ExecuteStrategy();
+        Task PerformActionAsync();
         List<IISkill> ISkills { get; set; }
         ResultDe LancerDe();
+        Task ExecuteStrategyAsync();
+
     }
 }

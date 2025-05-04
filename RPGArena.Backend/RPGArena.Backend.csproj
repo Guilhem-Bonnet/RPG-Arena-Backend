@@ -11,9 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="Loggers\" />
-    <Folder Include="Services\" />
     <ProjectReference Include="..\RPGArena.CombatEngine\RPGArena.CombatEngine.csproj" />
   </ItemGroup>
 

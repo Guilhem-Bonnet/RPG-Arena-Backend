@@ -17,7 +17,7 @@ public class Alchimiste : Character
         _skills.Add(new PotionChangeLife(_logger));
     }
 
-    public override async Task ExecuteStrategy()
+    public override async Task PerformActionAsync()
     {
         var target = ChooseTarget();
         var swapTarget = ChooseBestAllyForSwitch();

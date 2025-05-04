@@ -1,24 +1,32 @@
 ﻿using RPGArena.CombatEngine.Characters;
 using RPGArena.CombatEngine.Enums;
+using RPGArena.CombatEngine.Logging;
+using RPGArena.CombatEngine.Services;
 using ILogger = RPGArena.CombatEngine.Logging.ILogger;
 
 namespace RPGArena.CombatEngine.Core;
 
+/// <summary>
+/// BattleArena est le cœur du moteur de simulation de combat.
+/// Elle orchestre les personnages, lance leurs stratégies de manière asynchrone et multithreadée,
+/// puis détermine les conditions de victoire ou de défaite.
+/// </summary>
 public class BattleArena
 {
     private readonly List<ICharacter> _characters = new();
     private readonly ILogger _logger;
-
-    private bool EndBattle;
+    private readonly IFightService _fightService;
+    private bool _endBattle;
 
     public IReadOnlyList<ICharacter> Participants => _characters;
+    public bool Ended => _endBattle;
 
-    public bool Ended => EndBattle;
-
-    public BattleArena(List<string> names, ILogger logger)
+    public BattleArena(List<string> names, ILogger logger, IFightService fightService)
     {
         _logger = logger;
-        var factory = new CharacterFactory();
+        _fightService = fightService;
+
+        var factory = new CharacterFactory(this, logger, fightService);
 
         foreach (var name in names)
         {
@@ -27,9 +35,10 @@ public class BattleArena
         }
     }
 
-    public BattleArena(ILogger logger)
+    public BattleArena(ILogger logger, IFightService fightService)
     {
         _logger = logger;
+        _fightService = fightService;
     }
 
     public void AddCharacter(ICharacter character)
@@ -41,22 +50,20 @@ public class BattleArena
 
     public async Task StartBattle()
     {
-        EndBattle = false;
+        _endBattle = false;
         _logger.Log("🟢 Début du combat !");
 
-        // Replace the following line:
-        var tasks = _characters.Select(participant => Task.Run(() => participant.ExecuteStrategy())).ToArray();
+        // Lancer chaque stratégie sur son propre thread
+        var tasks = _characters.Select(c => Task.Run(() => c.ExecuteStrategyAsync())).ToArray();
 
-        // With this corrected line:
-        var tasks2 = _characters.Select(participant => Task.Run(() => participant.Strategie())).ToArray();
-
+        // Boucle d’attente jusqu’à ce qu’il n’y ait plus qu’un survivant
         while (_characters.Count(p => p.Life > 0) > 1 &&
                !(_characters.Count(p => p.Life > 0 && p.TypeDuPersonnage != TypePersonnage.MortVivant) == 0))
         {
             await Task.Delay(1000);
         }
 
-        EndBattle = true;
+        _endBattle = true;
 
         _logger.Log("🛑 Fin du combat — Résumé des combattants :\n");
 
@@ -82,5 +89,7 @@ public class BattleArena
         {
             _logger.Log("☠️ Tous les combattants sont morts. Il n'y a pas de survivants !");
         }
+
+        await Task.WhenAll(tasks); // s’assurer que toutes les stratégies sont terminées
     }
 }

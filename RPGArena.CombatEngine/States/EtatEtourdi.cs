@@ -1,39 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RPGArena.CombatEngine.Characters;
+﻿using RPGArena.CombatEngine.Characters;
 using RPGArena.CombatEngine.Core;
-using RPGArena.CombatEngine.Interface;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+using RPGArena.CombatEngine.States;
+using ILogger = RPGArena.CombatEngine.Logging.ILogger;
 
-namespace RPGArena.CombatEngine.State
+namespace RPGArena.CombatEngine.States
 {
-    internal class EtatEtourdi : EtatDecorateurAsync
+    /// <summary>
+    /// Effet d'étourdissement : empêche le personnage de lancer des attaques pendant une durée temporaire.
+    /// </summary>
+    public class EtatEtourdi : State
     {
-        private int DureeEtourdissement; // Durée en millisecondes
-        private bool EstActuellementEtourdi = true;
-        public EtatEtourdi(ICharacter Personnage, int dureeEtourdissement = 5) : base(Personnage)
+        private readonly CancellationTokenSource _cts = new();
+        private readonly int _durationMs;
+        private readonly ILogger _logger;
+
+        public override string Name => "Étourdissant";
+
+        public EtatEtourdi(Character target, ILogger logger, int durationMs = 5000) : base(target)
         {
-            this.DureeEtourdissement = dureeEtourdissement;
-            InitialiserEtourdissement();
+            _durationMs = durationMs;
+            _logger = logger;
         }
 
-        private async void InitialiserEtourdissement()
+        public override async Task OnStart()
         {
-            await Task.Delay(DureeEtourdissement);
-            EstActuellementEtourdi = false;
-        }
-
-        public override void Attack(Character target)
-        {
-            if (!EstActuellementEtourdi)
+            Target.CanAct = false;
+            _logger.Log($"💫 {Target.Name} est étourdi pour {_durationMs / 1000} secondes !");
+            try
             {
-                base.Attack(target);
+                await Task.Delay(_durationMs, _cts.Token);
             }
-            // Si le personnage est étourdi, il ne fait rien
+            catch (TaskCanceledException)
+            {
+                return;
+            }
+            Target.CanAct = true;
+            Target.RemoveState<EtatEtourdi>();
+            _logger.Log($"✅ {Target.Name} n'est plus étourdi.");
         }
 
-
+        public override void End()
+        {
+            _cts.Cancel();
+            Target.CanAct = true;
+            base.End();
+        }
     }
 }

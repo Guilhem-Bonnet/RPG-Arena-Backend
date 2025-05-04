@@ -3,7 +3,6 @@
 using Aspire.Hosting;
 using Aspire.Hosting.ApplicationModel;
 using RPGArena.CombatEngine.Interface;
-using RPGArena.CombatEngine.Observeur;
 using Projects;
 
 var builder = DistributedApplication.CreateBuilder(args);
