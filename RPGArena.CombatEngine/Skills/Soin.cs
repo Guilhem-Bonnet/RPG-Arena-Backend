@@ -17,8 +17,8 @@ public class Soin : Skill
     public override float BaseCooldown { get; set; } = 2.5f;
     public override TypeAttack Type { get; set; } = TypeAttack.Sacre;
 
-    public int ValueSoin { get; set; } = 20;
-    public int ValueDommage { get; set; } = 20;
+    public int ValueSoin { get; set; } = 15;
+    public override int ValueDommage { get; set; } = 20;
 
     public Soin(IFightService fightService, ILogger logger)
     {
@@ -36,11 +36,12 @@ public class Soin : Skill
         {
             var resultAttack = lanceur.LancerDe();
             var resultDefense = cible.LancerDe();
-            int damage = _fightService.CalculateDamage(lanceur, cible, Type, resultAttack, resultDefense);
-
-            _logger.Log($"☠️ {lanceur.Name} inflige {damage} dégâts sacrés à {cible.Name}.");
+            
+            int damage = _fightService.CalculateDamage(lanceur, cible, Type, resultAttack, resultDefense,this);
+            _fightService.InflictDamage(cible, damage);
+            
         }
-        else
+        else 
         {
             if (cible.HasState<Empoisonne>())
             {
@@ -51,8 +52,8 @@ public class Soin : Skill
             cible.Life += ValueSoin;
             _logger.Log($"💊 {cible.Name} regagne {ValueSoin} points de vie grâce à {Name}.");
         }
-
-        ReduceRecharge();
+        Cooldown = BaseCooldown;
+        
         await Task.CompletedTask;
     }
 }

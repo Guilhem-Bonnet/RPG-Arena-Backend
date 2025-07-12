@@ -56,7 +56,7 @@ public abstract class Character : ICharacter
         Name = name;
         _arena = arena;
         _logger = logger ?? new ConsoleLogger();
-        _fightservice = fightservice ?? new NoOpFightService();
+        _fightservice = fightservice ?? new FightService(_logger);
         _life = MaxLife;
 
         // Ajout de l'attaque de base en respectant les dépendances injectées
@@ -81,6 +81,8 @@ public abstract class Character : ICharacter
         {
             if (CanAct)
                 await PerformActionAsync();
+            foreach (var skill in _skills)
+                skill.ReduceRecharge();
 
             await Task.Delay(500);
         }
@@ -123,8 +125,9 @@ public abstract class Character : ICharacter
         var state = _states.OfType<T>().FirstOrDefault();
         if (state != null)
         {
+            _states.Remove(state); // le retire de la liste
             state.End();        // exécute le nettoyage spécifique à l’état
-            _states.Remove(state); // puis le retire de la liste
+            
         }
     }
 

@@ -10,6 +10,7 @@ public abstract class Skill : ISkill
 {
     public abstract string Name { get; }
     public virtual TypeAttack Type { get; set; } = TypeAttack.Normal;
+    public virtual int ValueDommage { get; set; } = 0;
     public virtual float Cooldown { get; set; } = 0;
     public virtual float BaseCooldown { get; set; } = 1;
 

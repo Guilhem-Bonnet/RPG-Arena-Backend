@@ -60,7 +60,6 @@ public abstract class State : IState
     {
         _cts.Cancel();
         ResetStack();
-        Target.RemoveState(this);
         _logger?.Log($"❌ {Target.Name} : {Name} se dissipe.");
     }
 }

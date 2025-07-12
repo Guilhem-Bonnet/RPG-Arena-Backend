@@ -2,6 +2,7 @@
 using RPGArena.CombatEngine.Core;
 using RPGArena.CombatEngine.Enums;
 using ILogger = RPGArena.CombatEngine.Logging.ILogger;
+using RPGArena.CombatEngine.Skills;
 
 namespace RPGArena.CombatEngine.Services;
 
@@ -14,10 +15,32 @@ public class FightService : IFightService
         _logger = logger;
     }
 
-    public int CalculateDamage(Character attacker, Character defender, TypeAttack typeAttack, ResultDe resultAttack, ResultDe resultDefense)
+    public void InflictDamage(Character cible, int damage)
+    {
+        if (cible == null) throw new ArgumentNullException(nameof(cible));
+        if (damage == 0)
+        {
+            _logger.Log($"{cible.Name} ne subit aucun dégât.");
+            return;
+        }
+        if (damage < 0) throw new ArgumentOutOfRangeException(nameof(damage), "Les dégâts ne peuvent pas être négatifs.");
+        
+
+        cible.Life -= damage;
+        _logger.Log($"💥 {cible.Name} subit {damage} dégâts. Vie restante : {cible.Life}/{cible.MaxLife}.");
+        
+        if (cible.IsDead)
+        {
+            _logger.Log($"⚰️ {cible.Name} est mort !");
+        }
+        
+    }
+    public int CalculateDamage(Character attacker, Character defender, TypeAttack typeAttack, ResultDe resultAttack, ResultDe resultDefense, ISkill skill = null)
     {
         LogDiceOutcome(attacker, resultAttack, true);
         LogDiceOutcome(defender, resultDefense, false);
+        int skillDamage = skill is Skill sk ? sk.ValueDommage : attacker.Attack;
+        int baseAttack = 0;
 
         if (resultAttack == ResultDe.RéussiteCritique && resultDefense == ResultDe.RéussiteCritique)
         {
@@ -32,16 +55,21 @@ public class FightService : IFightService
             attacker.Life -= counterDamage;
             return 0;
         }
-
-        int baseAttack = ApplyAttackMultiplier(resultAttack, attacker.Attack);
+    
+        if (skill != null)
+        {
+            baseAttack = ApplyAttackMultiplier(resultAttack, skillDamage);
+        }
+        else
+        {
+            baseAttack = ApplyAttackMultiplier(resultAttack, attacker.Attack);
+        }
+        
         int baseDefense = ApplyDefenseMultiplier(resultDefense, defender.Defense);
 
         int damage = Math.Max(baseAttack - baseDefense, 0);
         damage = ApplyTypeEffects(damage, typeAttack, attacker, defender);
-
-        _logger.Log($"🗡 {attacker.Name} inflige {damage} dégâts à {defender.Name}.");
-        defender.Life -= damage;
-
+        
         return damage;
     }
 

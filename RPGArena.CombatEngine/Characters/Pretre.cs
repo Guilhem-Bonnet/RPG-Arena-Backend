@@ -47,6 +47,8 @@ public class Pretre : Character
         {
             await skillAttack.Use(this, target);
         }
+        
+        
     }
 
     public override Task Strategie()

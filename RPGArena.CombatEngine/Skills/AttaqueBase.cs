@@ -34,7 +34,8 @@ public class AttackBase : Skill
         var resultAttack = lanceur.LancerDe();
         var resultDefense = cible.LancerDe();
 
-        _fightService.CalculateDamage(lanceur, cible, Type, resultAttack, resultDefense);
+        int damage = _fightService.CalculateDamage(lanceur, cible, Type, resultAttack, resultDefense);
+        _fightService.InflictDamage(cible, damage);
         await Task.CompletedTask;
     }
 }

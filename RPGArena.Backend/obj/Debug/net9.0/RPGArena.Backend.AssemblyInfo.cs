@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RPGArena.Backend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e64e02db6e5433f82f48c37f895931022497d549")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8656fe01600152fb8411cee9be0d2076c9be8c3a")]
 [assembly: System.Reflection.AssemblyProductAttribute("RPGArena.Backend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RPGArena.Backend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
