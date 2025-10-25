@@ -1,22 +1,9 @@
 // RPG-Arena/Program.cs
+// Point d'entrée simplifié - Le vrai serveur est dans RPGArena.Backend
 
-using Aspire.Hosting;
-using Aspire.Hosting.ApplicationModel;
-using RPGArena.CombatEngine.Interface;
-using Projects;
+using System;
 
-var builder = DistributedApplication.CreateBuilder(args);
-
-var mongo = builder.AddMongoDB("mongo")
-                   .WithDataVolume();
-
-var mongodb = mongo.AddDatabase("rpgarena");
-
-var redis = builder.AddRedis("redis");
-
-var backend = builder.AddProject<RPGArena_Backend>("RPGArena.Backend", "RPGArena.Backend/RPGArena.Backend.csproj")
-                     .WithReference(mongodb)
-                     .WaitFor(mongodb);
-
-
-builder.Build().Run();
+Console.WriteLine("⚠️  Ce projet est désactivé.");
+Console.WriteLine("➡️  Utilisez plutôt : cd RPGArena.Backend && dotnet run");
+Console.WriteLine("Pour lancer le serveur WebSocket RPG-Arena Backend");
+return 0;

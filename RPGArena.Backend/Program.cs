@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System.Net.WebSockets;
+using System.Text;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RPGArena.Backend.Loggers;
@@ -9,6 +11,7 @@ using RPGArena.CombatEngine.Services;
 using RPGArena.CombatEngine.Tests;
 using ILogger = RPGArena.CombatEngine.Logging.ILogger;
 using ConsoleLogger = RPGArena.Backend.Loggers.ConsoleLogger;
+
 
 namespace RPGArena.Backend;
 
@@ -50,17 +53,27 @@ public class Program
 
         app.Map("/ws", async context =>
         {
-            if (!context.WebSockets.IsWebSocketRequest)
+            if (context.WebSockets.IsWebSocketRequest)
+            {
+                var socket = await context.WebSockets.AcceptWebSocketAsync();
+                // boucle simple d’écho
+                var buffer = new byte[1024 * 4];
+                while (socket.State == WebSocketState.Open)
+                {
+                    var result = await socket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
+                    var text = Encoding.UTF8.GetString(buffer, 0, result.Count);
+                    Console.WriteLine($"Reçu: {text}");
+                    var response = Encoding.UTF8.GetBytes($"Echo: {text}");
+                    await socket.SendAsync(new ArraySegment<byte>(response), WebSocketMessageType.Text, true, CancellationToken.None);
+                }
+            }
+            else
             {
                 context.Response.StatusCode = 400;
-                return;
             }
-
-            using var socket = await context.WebSockets.AcceptWebSocketAsync();
-            var handler = context.RequestServices.GetRequiredService<WebSocketHandler>();
-            await handler.HandleConnection(socket);
         });
 
+        app.UseWebSockets();
         app.Run();
     }
 }
