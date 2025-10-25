@@ -20,7 +20,16 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        // ➤ Logger
+        // ➤ MongoDB
+        var mongoConnectionString = builder.Configuration.GetConnectionString("MongoDB") ?? "mongodb://localhost:27017";
+        var mongoClient = new MongoDB.Driver.MongoClient(mongoConnectionString);
+        var mongoDatabase = mongoClient.GetDatabase("RPGArena");
+        builder.Services.AddSingleton<MongoDB.Driver.IMongoDatabase>(mongoDatabase);
+
+        // ➤ Repositories
+        builder.Services.AddScoped<RPGArena.Backend.Repositories.ICombatRepository, RPGArena.Backend.Repositories.MongoCombatRepository>();
+
+        // ➤ Loggers
         builder.Services.AddSingleton<ConsoleLogger>();
         builder.Services.AddSingleton<MongoDbLogger>();
         builder.Services.AddSingleton<WebSocketLoggerFactory>();
@@ -31,6 +40,14 @@ public class Program
             var mongo = provider.GetRequiredService<MongoDbLogger>();
             return new MultiLogger(new ILogger[] { console, mongo });
         });
+
+        // ➤ Services de combat
+        builder.Services.AddScoped<RPGArena.CombatEngine.Services.IFightService, RPGArena.CombatEngine.Services.FightService>();
+        builder.Services.AddScoped<RPGArena.CombatEngine.Core.BattleArena>();
+        builder.Services.AddScoped<RPGArena.CombatEngine.Characters.ICharacterFactory, RPGArena.CombatEngine.Characters.CharacterFactory>();
+        
+        // ➤ Battle Manager
+        builder.Services.AddScoped<RPGArena.Backend.Services.BattleManager>();
 
         // ➤ WebSocket handler
         builder.Services.AddScoped<WebSocketHandler>();
