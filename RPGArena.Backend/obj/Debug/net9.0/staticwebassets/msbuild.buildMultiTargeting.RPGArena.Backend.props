@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="../build/RPGArena.Backend.props" />
-</Project>

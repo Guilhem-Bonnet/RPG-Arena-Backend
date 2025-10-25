@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "net9.0": {
+    "net8.0": {
       "Aspire.MongoDB.Driver/9.2.0": {
         "type": "package",
         "dependencies": {
@@ -662,7 +662,7 @@
       },
       "RPGArena.CombatEngine/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v9.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "compile": {
           "bin/placeholder/RPGArena.CombatEngine.dll": {}
         },
@@ -1685,8 +1685,9 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net9.0": [
+    "net8.0": [
       "Aspire.MongoDB.Driver >= 9.2.0",
+      "MongoDB.Driver >= 2.30.0",
       "RPGArena.CombatEngine >= 1.0.0"
     ]
   },
@@ -1696,28 +1697,28 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/mnt/Travail/Projets-Jeux/BR-RPG-V2/RPG-Arena-Backend/New/RPG-Arena/RPGArena.Backend/RPGArena.Backend.csproj",
+      "projectUniqueName": "/mnt/Travail/Projets/Dev/Serious-Game/Godot/BR-RPG-V2/RPG-Arena-Backend/RPG-Arena/RPGArena.Backend/RPGArena.Backend.csproj",
       "projectName": "RPGArena.Backend",
-      "projectPath": "/mnt/Travail/Projets-Jeux/BR-RPG-V2/RPG-Arena-Backend/New/RPG-Arena/RPGArena.Backend/RPGArena.Backend.csproj",
+      "projectPath": "/mnt/Travail/Projets/Dev/Serious-Game/Godot/BR-RPG-V2/RPG-Arena-Backend/RPG-Arena/RPGArena.Backend/RPGArena.Backend.csproj",
       "packagesPath": "/home/guilhem/.nuget/packages/",
-      "outputPath": "/mnt/Travail/Projets-Jeux/BR-RPG-V2/RPG-Arena-Backend/New/RPG-Arena/RPGArena.Backend/obj/",
+      "outputPath": "/mnt/Travail/Projets/Dev/Serious-Game/Godot/BR-RPG-V2/RPG-Arena-Backend/RPG-Arena/RPGArena.Backend/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/guilhem/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
-        "net9.0"
+        "net8.0"
       ],
       "sources": {
-        "/usr/lib/dotnet/library-packs": {},
+        "/home/guilhem/.dotnet/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net9.0": {
-          "targetAlias": "net9.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "projectReferences": {
-            "/mnt/Travail/Projets-Jeux/BR-RPG-V2/RPG-Arena-Backend/New/RPG-Arena/RPGArena.CombatEngine/RPGArena.CombatEngine.csproj": {
-              "projectPath": "/mnt/Travail/Projets-Jeux/BR-RPG-V2/RPG-Arena-Backend/New/RPG-Arena/RPGArena.CombatEngine/RPGArena.CombatEngine.csproj"
+            "/mnt/Travail/Projets/Dev/Serious-Game/Godot/BR-RPG-V2/RPG-Arena-Backend/RPG-Arena/RPGArena.CombatEngine/RPGArena.CombatEngine.csproj": {
+              "projectPath": "/mnt/Travail/Projets/Dev/Serious-Game/Godot/BR-RPG-V2/RPG-Arena-Backend/RPG-Arena/RPGArena.CombatEngine/RPGArena.CombatEngine.csproj"
             }
           }
         }
@@ -1731,16 +1732,19 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.100"
+      }
     },
     "frameworks": {
-      "net9.0": {
-        "targetAlias": "net9.0",
+      "net8.0": {
+        "targetAlias": "net8.0",
         "dependencies": {
           "Aspire.MongoDB.Driver": {
             "target": "Package",
             "version": "[9.2.0, )"
+          },
+          "MongoDB.Driver": {
+            "target": "Package",
+            "version": "[2.30.0, )"
           }
         },
         "imports": [
@@ -1762,7 +1766,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/9.0.108/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/home/guilhem/.dotnet/sdk/8.0.412/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

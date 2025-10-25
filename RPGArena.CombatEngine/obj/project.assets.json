@@ -1,11 +1,11 @@
 {
   "version": 3,
   "targets": {
-    "net9.0": {}
+    "net8.0": {}
   },
   "libraries": {},
   "projectFileDependencyGroups": {
-    "net9.0": []
+    "net8.0": []
   },
   "packageFolders": {
     "/home/guilhem/.nuget/packages/": {}
@@ -13,25 +13,25 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/mnt/Travail/Projets-Jeux/BR-RPG-V2/RPG-Arena-Backend/New/RPG-Arena/RPGArena.CombatEngine/RPGArena.CombatEngine.csproj",
+      "projectUniqueName": "/mnt/Travail/Projets/Dev/Serious-Game/Godot/BR-RPG-V2/RPG-Arena-Backend/RPG-Arena/RPGArena.CombatEngine/RPGArena.CombatEngine.csproj",
       "projectName": "RPGArena.CombatEngine",
-      "projectPath": "/mnt/Travail/Projets-Jeux/BR-RPG-V2/RPG-Arena-Backend/New/RPG-Arena/RPGArena.CombatEngine/RPGArena.CombatEngine.csproj",
+      "projectPath": "/mnt/Travail/Projets/Dev/Serious-Game/Godot/BR-RPG-V2/RPG-Arena-Backend/RPG-Arena/RPGArena.CombatEngine/RPGArena.CombatEngine.csproj",
       "packagesPath": "/home/guilhem/.nuget/packages/",
-      "outputPath": "/mnt/Travail/Projets-Jeux/BR-RPG-V2/RPG-Arena-Backend/New/RPG-Arena/RPGArena.CombatEngine/obj/",
+      "outputPath": "/mnt/Travail/Projets/Dev/Serious-Game/Godot/BR-RPG-V2/RPG-Arena-Backend/RPG-Arena/RPGArena.CombatEngine/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/guilhem/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
-        "net9.0"
+        "net8.0"
       ],
       "sources": {
-        "/usr/lib/dotnet/library-packs": {},
+        "/home/guilhem/.dotnet/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net9.0": {
-          "targetAlias": "net9.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "projectReferences": {}
         }
       },
@@ -44,12 +44,11 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.100"
+      }
     },
     "frameworks": {
-      "net9.0": {
-        "targetAlias": "net9.0",
+      "net8.0": {
+        "targetAlias": "net8.0",
         "imports": [
           "net461",
           "net462",
@@ -66,7 +65,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/9.0.108/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/home/guilhem/.dotnet/sdk/8.0.412/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
