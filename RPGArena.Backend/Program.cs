@@ -72,15 +72,19 @@ public class Program
             if (context.WebSockets.IsWebSocketRequest)
             {
                 var socket = await context.WebSockets.AcceptWebSocketAsync();
-                // boucle simple d’écho
-                var buffer = new byte[1024 * 4];
-                while (socket.State == WebSocketState.Open)
+                var handler = context.RequestServices.GetRequiredService<WebSocketHandler>();
+                
+                try
                 {
-                    var result = await socket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
-                    var text = Encoding.UTF8.GetString(buffer, 0, result.Count);
-                    Console.WriteLine($"Reçu: {text}");
-                    var response = Encoding.UTF8.GetBytes($"Echo: {text}");
-                    await socket.SendAsync(new ArraySegment<byte>(response), WebSocketMessageType.Text, true, CancellationToken.None);
+                    await handler.HandleConnection(socket);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"❌ Erreur WebSocket: {ex.Message}");
+                    if (socket.State == WebSocketState.Open)
+                    {
+                        await socket.CloseAsync(WebSocketCloseStatus.InternalServerError, "Server error", CancellationToken.None);
+                    }
                 }
             }
             else
@@ -89,7 +93,8 @@ public class Program
             }
         });
 
-        app.UseWebSockets();
+        Console.WriteLine("✅ Serveur RPG Arena démarré");
+        Console.WriteLine("📡 Endpoint WebSocket: ws://localhost:5000/ws");
         app.Run();
     }
 }
