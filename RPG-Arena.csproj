@@ -1,10 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <OutputType>Exe</OutputType>
-    <IsAspireHost>false</IsAspireHost>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="RPGArena.Tests/**" />
+    <EmbeddedResource Remove="RPGArena.Tests/**" />
+    <None Remove="RPGArena.Tests/**" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="RPGArena.Backend/RPGArena.Backend.csproj" />
