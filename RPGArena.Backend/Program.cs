@@ -65,6 +65,23 @@ public class Program
         }
 
         var app = builder.Build();
+        
+        // ➤ Middleware global de gestion d'erreurs
+        app.Use(async (context, next) =>
+        {
+            try
+            {
+                await next(context);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"❌ Erreur non gérée: {ex.Message}");
+                Console.WriteLine($"   Stacktrace: {ex.StackTrace}");
+                context.Response.StatusCode = 500;
+                await context.Response.WriteAsync("Internal Server Error");
+            }
+        });
+        
         app.UseWebSockets();
 
         app.Map("/ws", async context =>
