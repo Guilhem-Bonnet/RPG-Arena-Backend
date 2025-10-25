@@ -10,7 +10,6 @@ using RPGArena.CombatEngine.Logging;
 using RPGArena.CombatEngine.Services;
 using RPGArena.CombatEngine.Tests;
 using ILogger = RPGArena.CombatEngine.Logging.ILogger;
-using ConsoleLogger = RPGArena.Backend.Loggers.ConsoleLogger;
 
 
 namespace RPGArena.Backend;
