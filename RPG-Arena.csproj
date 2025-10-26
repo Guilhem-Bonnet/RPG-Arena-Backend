@@ -5,12 +5,21 @@
     <OutputType>Exe</OutputType>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="RPGArena.Tests/**" />
     <EmbeddedResource Remove="RPGArena.Tests/**" />
     <None Remove="RPGArena.Tests/**" />
+    
+    <Compile Remove="RPGArena.Backend/**" />
+    <EmbeddedResource Remove="RPGArena.Backend/**" />
+    <None Remove="RPGArena.Backend/**" />
+    
+    <Compile Remove="RPGArena.CombatEngine/**" />
+    <EmbeddedResource Remove="RPGArena.CombatEngine/**" />
+    <None Remove="RPGArena.CombatEngine/**" />
   </ItemGroup>
 
   <ItemGroup>

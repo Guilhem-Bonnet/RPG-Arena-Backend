@@ -9,6 +9,12 @@ using RPGArena.Backend.Loggers;
 
 namespace RPGArena.Backend.Services;
 
+public class CharacterConfigDto
+{
+    public string type { get; set; } = "guerrier";
+    public string name { get; set; } = "";
+}
+
 public class WebSocketHandler
 {
     private readonly WebSocketLoggerFactory _loggerFactory;
@@ -34,16 +40,38 @@ public class WebSocketHandler
         var result = await socket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
         var json = Encoding.UTF8.GetString(buffer, 0, result.Count);
 
-        var names = JsonSerializer.Deserialize<List<string>>(json);
+        Console.WriteLine($"📨 Message reçu: {json}");
 
-        if (names == null || names.Count < 2)
+        // Essayer de désérialiser comme liste d'objets avec type et name
+        List<(string Type, string Name)> characters;
+        
+        try
         {
-            await socket.CloseAsync(WebSocketCloseStatus.InvalidPayloadData, "Invalid data", CancellationToken.None);
+            var configs = JsonSerializer.Deserialize<List<CharacterConfigDto>>(json);
+            if (configs != null && configs.Count >= 2)
+            {
+                characters = configs.Select(c => (c.type, c.name)).ToList();
+                Console.WriteLine($"✅ Format nouveau protocole détecté: {configs.Count} personnages");
+            }
+            else
+            {
+                // Essayer l'ancien format (liste de noms simples)
+                var names = JsonSerializer.Deserialize<List<string>>(json);
+                if (names == null || names.Count < 2)
+                {
+                    await socket.CloseAsync(WebSocketCloseStatus.InvalidPayloadData, "Invalid data: need at least 2 characters", CancellationToken.None);
+                    return;
+                }
+                characters = names.Select(n => ("guerrier", n)).ToList();
+                Console.WriteLine($"⚠️  Ancien format détecté, utilisation de 'guerrier' par défaut");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"❌ Erreur de désérialisation: {ex.Message}");
+            await socket.CloseAsync(WebSocketCloseStatus.InvalidPayloadData, $"JSON error: {ex.Message}", CancellationToken.None);
             return;
         }
-
-        // Convertir en paires (Type, Name) — tu peux remplacer "Default" si tu veux plus de flexibilité
-        var characters = names.Select(n => ("Default", n)).ToList();
 
         var logger = new MultiLogger(new ILogger[]
         {
@@ -53,7 +81,6 @@ public class WebSocketHandler
         });
 
         await _battleManager.RunBattleAsync(characters, logger);
-
         await socket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Battle ended", CancellationToken.None);
     }
 }
