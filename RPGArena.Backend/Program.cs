@@ -19,6 +19,12 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
+        // ➤ Validation des secrets en production
+        if (builder.Environment.IsProduction())
+        {
+            ValidateProductionSecrets();
+        }
+
         // ➤ MongoDB via Aspire (connexion automatique depuis l'AppHost)
         builder.AddMongoDBClient("mongodb");
 
@@ -108,5 +114,72 @@ public class Program
         Console.WriteLine("📡 Endpoint WebSocket: ws://localhost:5000/ws");
         Console.WriteLine("🏥 Health check: http://localhost:5000/health");
         app.Run();
+    }
+
+    /// <summary>
+    /// Valide que les secrets de production ne sont pas les valeurs par défaut
+    /// </summary>
+    private static void ValidateProductionSecrets()
+    {
+        var errors = new List<string>();
+
+        // Validation MongoDB password
+        var mongoPassword = Environment.GetEnvironmentVariable("MONGO_INITDB_ROOT_PASSWORD");
+        if (string.IsNullOrEmpty(mongoPassword) || mongoPassword == "rootpassword123")
+        {
+            errors.Add("❌ MONGO_INITDB_ROOT_PASSWORD: Must be set and not use default value!");
+        }
+
+        var mongoUserPassword = Environment.GetEnvironmentVariable("MONGO_PASSWORD");
+        if (string.IsNullOrEmpty(mongoUserPassword) || mongoUserPassword == "rpgarena_pass")
+        {
+            errors.Add("❌ MONGO_PASSWORD: Must be set and not use default value!");
+        }
+
+        // Validation MongoExpress credentials
+        var mePassword = Environment.GetEnvironmentVariable("ME_CONFIG_BASICAUTH_PASSWORD");
+        if (string.IsNullOrEmpty(mePassword) || mePassword == "pass")
+        {
+            errors.Add("❌ ME_CONFIG_BASICAUTH_PASSWORD: Must be set and not use default value!");
+        }
+
+        // Validation Certificate password
+        var certPassword = Environment.GetEnvironmentVariable("CERTIFICATE_PASSWORD");
+        if (string.IsNullOrEmpty(certPassword) || certPassword == "devpassword")
+        {
+            errors.Add("❌ CERTIFICATE_PASSWORD: Must be set and not use default value!");
+        }
+
+        if (errors.Count > 0)
+        {
+            Console.WriteLine("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+            Console.WriteLine("🚨 PRODUCTION SECURITY VALIDATION FAILED");
+            Console.WriteLine("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+            Console.WriteLine();
+            Console.WriteLine("Default credentials detected! Production deployment BLOCKED.");
+            Console.WriteLine();
+            foreach (var error in errors)
+            {
+                Console.WriteLine($"  {error}");
+            }
+            Console.WriteLine();
+            Console.WriteLine("📝 Action Required:");
+            Console.WriteLine("  1. Copy .env.production.template to .env.production");
+            Console.WriteLine("  2. Set strong passwords (min 20 characters)");
+            Console.WriteLine("  3. Use: docker compose --env-file .env.production up -d");
+            Console.WriteLine();
+            Console.WriteLine("💡 Generate strong passwords:");
+            Console.WriteLine("  openssl rand -base64 32");
+            Console.WriteLine("  pwgen -s 32 1");
+            Console.WriteLine();
+            Console.WriteLine("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+            
+            throw new InvalidOperationException(
+                "Production deployment blocked: Default credentials detected. " +
+                "Please configure .env.production with strong passwords."
+            );
+        }
+
+        Console.WriteLine("✅ Production secrets validation passed");
     }
 }

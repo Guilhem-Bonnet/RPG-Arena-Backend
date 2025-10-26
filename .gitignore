@@ -58,3 +58,4 @@ TestResults/
 project.lock.json
 project.fragment.lock.json
 artifacts/
+.env.production
