@@ -15,10 +15,9 @@ public class MongoDbLogger : ILogger
 {
     private readonly IMongoCollection<BsonDocument> _collection;
 
-    public MongoDbLogger()
+    public MongoDbLogger(IMongoClient mongoClient)
     {
-        var client = new MongoClient("mongodb://localhost:27017"); // � adapter si besoin WIP
-        var database = client.GetDatabase("rpgarena");
+        var database = mongoClient.GetDatabase("RPGArena");
         _collection = database.GetCollection<BsonDocument>("combat_logs");
     }
 

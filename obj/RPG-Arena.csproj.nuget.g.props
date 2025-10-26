@@ -13,13 +13,13 @@
     <SourceRoot Include="/home/guilhem/.nuget/packages/" />
   </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="$(NuGetPackageRoot)microsoft.extensions.configuration.usersecrets/9.0.0/buildTransitive/net8.0/Microsoft.Extensions.Configuration.UserSecrets.props" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.configuration.usersecrets/9.0.0/buildTransitive/net8.0/Microsoft.Extensions.Configuration.UserSecrets.props')" />
-    <Import Project="$(NuGetPackageRoot)aspire.hosting.apphost/9.0.0/build/Aspire.Hosting.AppHost.props" Condition="Exists('$(NuGetPackageRoot)aspire.hosting.apphost/9.0.0/build/Aspire.Hosting.AppHost.props')" />
-    <Import Project="$(NuGetPackageRoot)aspire.dashboard.sdk.linux-x64/9.0.0/buildTransitive/Aspire.Dashboard.Sdk.linux-x64.props" Condition="Exists('$(NuGetPackageRoot)aspire.dashboard.sdk.linux-x64/9.0.0/buildTransitive/Aspire.Dashboard.Sdk.linux-x64.props')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.extensions.configuration.usersecrets/9.0.4/buildTransitive/net8.0/Microsoft.Extensions.Configuration.UserSecrets.props" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.configuration.usersecrets/9.0.4/buildTransitive/net8.0/Microsoft.Extensions.Configuration.UserSecrets.props')" />
+    <Import Project="$(NuGetPackageRoot)aspire.hosting.apphost/9.2.0/build/Aspire.Hosting.AppHost.props" Condition="Exists('$(NuGetPackageRoot)aspire.hosting.apphost/9.2.0/build/Aspire.Hosting.AppHost.props')" />
+    <Import Project="$(NuGetPackageRoot)aspire.dashboard.sdk.linux-x64/9.2.0/buildTransitive/Aspire.Dashboard.Sdk.linux-x64.props" Condition="Exists('$(NuGetPackageRoot)aspire.dashboard.sdk.linux-x64/9.2.0/buildTransitive/Aspire.Dashboard.Sdk.linux-x64.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgGrpc_Tools Condition=" '$(PkgGrpc_Tools)' == '' ">/home/guilhem/.nuget/packages/grpc.tools/2.71.0</PkgGrpc_Tools>
-    <PkgAspire_Hosting_Orchestration_linux-x64 Condition=" '$(PkgAspire_Hosting_Orchestration_linux-x64)' == '' ">/home/guilhem/.nuget/packages/aspire.hosting.orchestration.linux-x64/9.0.0</PkgAspire_Hosting_Orchestration_linux-x64>
-    <PkgAspire_Dashboard_Sdk_linux-x64 Condition=" '$(PkgAspire_Dashboard_Sdk_linux-x64)' == '' ">/home/guilhem/.nuget/packages/aspire.dashboard.sdk.linux-x64/9.0.0</PkgAspire_Dashboard_Sdk_linux-x64>
+    <PkgAspire_Hosting_Orchestration_linux-x64 Condition=" '$(PkgAspire_Hosting_Orchestration_linux-x64)' == '' ">/home/guilhem/.nuget/packages/aspire.hosting.orchestration.linux-x64/9.2.0</PkgAspire_Hosting_Orchestration_linux-x64>
+    <PkgAspire_Dashboard_Sdk_linux-x64 Condition=" '$(PkgAspire_Dashboard_Sdk_linux-x64)' == '' ">/home/guilhem/.nuget/packages/aspire.dashboard.sdk.linux-x64/9.2.0</PkgAspire_Dashboard_Sdk_linux-x64>
   </PropertyGroup>
 </Project>

@@ -18,9 +18,20 @@ public class WebSocketLogger : ILogger
     {
         if (_socket.State == WebSocketState.Open)
         {
-            var bytes = Encoding.UTF8.GetBytes(message + "\n");
-            _socket.SendAsync(bytes, WebSocketMessageType.Text, true, CancellationToken.None)
-                  .GetAwaiter().GetResult();
+            // Fire-and-forget asynchrone pour éviter les deadlocks
+            _ = Task.Run(async () =>
+            {
+                try
+                {
+                    var bytes = Encoding.UTF8.GetBytes(message + "\n");
+                    await _socket.SendAsync(bytes, WebSocketMessageType.Text, true, CancellationToken.None);
+                }
+                catch (Exception ex)
+                {
+                    // Log silencieux des erreurs pour ne pas bloquer le combat
+                    Console.WriteLine($"⚠️ WebSocket send error: {ex.Message}");
+                }
+            });
         }
     }
 }

@@ -1,0 +1,42 @@
+# ═══════════════════════════════════════════════════════════════
+# Docker Compose - Mode Développement
+# Override pour le développement local
+# Usage: docker compose -f docker-compose.yml -f docker-compose.dev.yml up
+# ═══════════════════════════════════════════════════════════════
+
+services:
+  backend:
+    build:
+      target: build  # Utilise le stage de build pour hot-reload
+    
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: "http://+:5000"
+      DOTNET_USE_POLLING_FILE_WATCHER: "1"
+      DOTNET_WATCH_SUPPRESS_LAUNCH_SETTINGS_WARNING: "1"
+    
+    volumes:
+      # Hot reload du code source
+      - ./RPGArena.Backend:/src/RPGArena.Backend
+      - ./RPGArena.CombatEngine:/src/RPGArena.CombatEngine
+      # Exclure les artifacts de build
+      - /src/RPGArena.Backend/bin
+      - /src/RPGArena.Backend/obj
+      - /src/RPGArena.CombatEngine/bin
+      - /src/RPGArena.CombatEngine/obj
+    
+    # En dev, pas besoin de health check strict
+    healthcheck:
+      interval: 60s
+    
+    # Commande pour hot reload
+    command: ["dotnet", "watch", "run", "--project", "/src/RPGArena.Backend/RPGArena.Backend.csproj", "--no-launch-profile", "--urls", "http://+:5000"]
+
+  mongodb:
+    # En dev, exposer tous les ports pour debugger
+    ports:
+      - "27017:27017"
+
+  mongo-express:
+    # En dev, toujours disponible
+    profiles: []

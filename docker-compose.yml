@@ -1,0 +1,260 @@
+# ═══════════════════════════════════════════════════════════════
+# Docker Compose - RPG Arena Backend
+# Stack Complète: Backend + MongoDB + MongoExpress + Services
+# ═══════════════════════════════════════════════════════════════
+
+services:
+  # ═══════════════════════════════════════════════════════════════
+  # 🚀 Backend WebSocket - Application principale
+  # ═══════════════════════════════════════════════════════════════
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rpgarena-backend
+    restart: unless-stopped
+    
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    
+    environment:
+      # Configuration ASP.NET Core
+      ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT:-Production}
+      ASPNETCORE_URLS: http://+:5000;https://+:5001
+      
+      # Configuration MongoDB (utilisée par Aspire)
+      ConnectionStrings__mongodb: mongodb://rpgarena_user:rpgarena_pass@mongodb:27017/RPGArena?authSource=RPGArena
+      
+      # Configuration HTTPS (en production, utiliser des vrais certificats)
+      ASPNETCORE_Kestrel__Certificates__Default__Path: /https/aspnetcore.pfx
+      ASPNETCORE_Kestrel__Certificates__Default__Password: ${CERTIFICATE_PASSWORD:-devpassword}
+    
+    ports:
+      - "5000:5000"   # HTTP
+      # - "5001:5001"   # HTTPS (désactivé temporairement)
+    
+    volumes:
+      # Certificats SSL (à créer en production)
+      - ./docker/https:/https:ro
+      # Logs
+      - ./logs:/app/logs
+    
+    networks:
+      - rpgarena-network
+    
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health", "||", "exit", "1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    
+    labels:
+      - "project=rpgarena"
+      - "tier=backend"
+      - "service=websocket"
+
+
+  # ═══════════════════════════════════════════════════════════════
+  # 🗄️  MongoDB - Base de données principale
+  # ═══════════════════════════════════════════════════════════════
+  mongodb:
+    image: mongo:8.0
+    container_name: rpgarena-mongodb
+    restart: unless-stopped
+    
+    environment:
+      # Credentials admin
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin123
+      
+      # Base de données par défaut
+      MONGO_INITDB_DATABASE: RPGArena
+    
+    ports:
+      - "27017:27017"
+    
+    volumes:
+      # Persistance des données
+      - mongodb_data:/data/db
+      - mongodb_config:/data/configdb
+      
+      # Scripts d'initialisation (exécutés au premier démarrage)
+      - ./docker/mongodb/init-scripts:/docker-entrypoint-initdb.d:ro
+      
+      # Configuration personnalisée
+      - ./docker/mongodb/mongod.conf:/etc/mongod.conf:ro
+    
+    # Commande avec configuration custom
+    command: ["mongod", "--config", "/etc/mongod.conf"]
+    
+    networks:
+      - rpgarena-network
+    
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    
+    labels:
+      - "project=rpgarena"
+      - "tier=database"
+
+
+  # ═══════════════════════════════════════════════════════════════
+  # 🌐 MongoExpress - Interface Web pour MongoDB
+  # ═══════════════════════════════════════════════════════════════
+  mongo-express:
+    image: mongo-express:latest
+    container_name: rpgarena-mongo-express
+    restart: unless-stopped
+    
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    
+    environment:
+      # Connection à MongoDB
+      ME_CONFIG_MONGODB_SERVER: mongodb
+      ME_CONFIG_MONGODB_PORT: "27017"
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: admin123
+      
+      # Credentials MongoExpress UI
+      ME_CONFIG_BASICAUTH_USERNAME: admin
+      ME_CONFIG_BASICAUTH_PASSWORD: pass
+      
+      # Configuration UI
+      ME_CONFIG_SITE_BASEURL: /
+      ME_CONFIG_SITE_COOKIESECRET: rpgarena-secret-cookie
+      ME_CONFIG_SITE_SESSIONSECRET: rpgarena-secret-session
+    
+    ports:
+      - "8081:8081"
+    
+    networks:
+      - rpgarena-network
+    
+    labels:
+      - "project=rpgarena"
+      - "tier=admin-ui"
+
+
+  # ═══════════════════════════════════════════════════════════════
+  # 🔧 MongoDB Backup (optionnel - peut être lancé manuellement)
+  # ═══════════════════════════════════════════════════════════════
+  mongodb-backup:
+    image: mongo:8.0
+    container_name: rpgarena-mongodb-backup
+    profiles:
+      - backup  # Ne démarre pas automatiquement
+    
+    depends_on:
+      - mongodb
+    
+    environment:
+      MONGO_HOST: mongodb
+      MONGO_PORT: "27017"
+      MONGO_USERNAME: rpgarena_user
+      MONGO_PASSWORD: rpgarena_pass
+      MONGO_DATABASE: RPGArena
+      MONGO_AUTH_SOURCE: RPGArena
+    
+    volumes:
+      - ./backups:/backups
+      - ./docker/mongodb/backup-scripts:/scripts:ro
+    
+    networks:
+      - rpgarena-network
+    
+    command: ["bash", "/scripts/backup.sh"]
+    
+    labels:
+      - "project=rpgarena"
+      - "tier=maintenance"
+
+
+  # ═══════════════════════════════════════════════════════════════
+  # 🧪 Tests d'Intégration (optionnel - peut être lancé manuellement)
+  # ═══════════════════════════════════════════════════════════════
+  integration-tests:
+    build:
+      context: .
+      dockerfile: docker/testing/Dockerfile
+    container_name: rpgarena-integration-tests
+    profiles:
+      - test  # Ne démarre pas automatiquement
+    
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      mongo-express:
+        condition: service_started
+    
+    environment:
+      # Configuration MongoDB
+      MONGO_HOST: mongodb
+      MONGO_PORT: "27017"
+      MONGO_USERNAME: rpgarena_user
+      MONGO_PASSWORD: rpgarena_pass
+      MONGO_DATABASE: RPGArena
+      MONGO_AUTH_SOURCE: RPGArena
+      
+      # Configuration pour les tests
+      ASPNETCORE_ENVIRONMENT: Development
+      DOTNET_CLI_TELEMETRY_OPTOUT: 1
+    
+    networks:
+      - rpgarena-network
+    
+    command: ["bash", "/workspace/scripts/test-integration.sh"]
+    
+    labels:
+      - "project=rpgarena"
+      - "tier=testing"
+
+
+  # ═══════════════════════════════════════════════════════════════
+  # 🧪 Tests Unitaires (optionnel - peut être lancé manuellement)
+  # ═══════════════════════════════════════════════════════════════
+  unit-tests:
+    build:
+      context: .
+      dockerfile: docker/testing/Dockerfile
+    container_name: rpgarena-unit-tests
+    profiles:
+      - test  # Ne démarre pas automatiquement
+    
+    environment:
+      DOTNET_CLI_TELEMETRY_OPTOUT: 1
+    
+    command: ["dotnet", "test", "--verbosity", "normal"]
+    
+    labels:
+      - "project=rpgarena"
+      - "tier=testing"
+
+
+# ═══════════════════════════════════════════════════════════════
+# 📦 Volumes persistants
+# ═══════════════════════════════════════════════════════════════
+volumes:
+  mongodb_data:
+    name: rpgarena_mongodb_data
+    driver: local
+  
+  mongodb_config:
+    name: rpgarena_mongodb_config
+    driver: local
+
+
+# ═══════════════════════════════════════════════════════════════
+# 🌐 Réseau dédié
+# ═══════════════════════════════════════════════════════════════
+networks:
+  rpgarena-network:
+    name: rpgarena-network
+    driver: bridge

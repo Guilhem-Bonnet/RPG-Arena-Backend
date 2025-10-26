@@ -8,5 +8,5 @@ namespace Projects;
 public class RPG_Arena
 {
     private RPG_Arena() { }
-    public static string ProjectPath => """/mnt/Travail/Projets-Jeux/BR-RPG-V2/RPG-Arena-Backend/New/RPG-Arena""";
+    public static string ProjectPath => """/mnt/Travail/Projets/Dev/Serious-Game/Godot/BR-RPG-V2/RPG-Arena-Backend/RPG-Arena""";
 }

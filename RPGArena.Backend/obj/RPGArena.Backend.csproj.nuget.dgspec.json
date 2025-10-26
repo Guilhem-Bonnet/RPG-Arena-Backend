@@ -17,15 +17,15 @@
           "/home/guilhem/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net8.0"
+          "net9.0"
         ],
         "sources": {
           "/home/guilhem/.dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
+          "net9.0": {
+            "targetAlias": "net9.0",
             "projectReferences": {
               "/mnt/Travail/Projets/Dev/Serious-Game/Godot/BR-RPG-V2/RPG-Arena-Backend/RPG-Arena/RPGArena.CombatEngine/RPGArena.CombatEngine.csproj": {
                 "projectPath": "/mnt/Travail/Projets/Dev/Serious-Game/Godot/BR-RPG-V2/RPG-Arena-Backend/RPG-Arena/RPGArena.CombatEngine/RPGArena.CombatEngine.csproj"
@@ -42,19 +42,20 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
+        "net9.0": {
+          "targetAlias": "net9.0",
           "dependencies": {
             "Aspire.MongoDB.Driver": {
               "target": "Package",
               "version": "[9.2.0, )"
             },
-            "MongoDB.Driver": {
+            "Microsoft.Extensions.ServiceDiscovery": {
               "target": "Package",
-              "version": "[2.30.0, )"
+              "version": "[9.2.0, )"
             }
           },
           "imports": [
@@ -76,7 +77,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/home/guilhem/.dotnet/sdk/8.0.412/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/home/guilhem/.dotnet/sdk/9.0.306/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
@@ -93,15 +94,15 @@
           "/home/guilhem/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net8.0"
+          "net9.0"
         ],
         "sources": {
           "/home/guilhem/.dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
+          "net9.0": {
+            "targetAlias": "net9.0",
             "projectReferences": {}
           }
         },
@@ -114,11 +115,12 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
+        "net9.0": {
+          "targetAlias": "net9.0",
           "imports": [
             "net461",
             "net462",
@@ -135,7 +137,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/home/guilhem/.dotnet/sdk/8.0.412/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/home/guilhem/.dotnet/sdk/9.0.306/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

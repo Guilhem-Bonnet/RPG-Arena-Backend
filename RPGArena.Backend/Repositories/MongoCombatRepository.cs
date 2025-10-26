@@ -10,8 +10,9 @@ public class MongoCombatRepository : ICombatRepository
 {
     private readonly IMongoCollection<CombatRecord> _collection;
 
-    public MongoCombatRepository(IMongoDatabase database)
+    public MongoCombatRepository(IMongoClient mongoClient)
     {
+        var database = mongoClient.GetDatabase("RPGArena");
         _collection = database.GetCollection<CombatRecord>("CombatRecords");
     }
 

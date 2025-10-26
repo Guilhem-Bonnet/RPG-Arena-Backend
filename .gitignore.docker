@@ -1,0 +1,11 @@
+# Backups MongoDB
+backups/
+
+# Fichiers d'environnement (contiennent des secrets)
+.env
+
+# Logs
+*.log
+
+# Docker volumes
+docker/mongodb/data/

@@ -8,7 +8,6 @@ using RPGArena.Backend.Services;
 using RPGArena.CombatEngine.Core;
 using RPGArena.CombatEngine.Logging;
 using RPGArena.CombatEngine.Services;
-using RPGArena.CombatEngine.Tests;
 using ILogger = RPGArena.CombatEngine.Logging.ILogger;
 
 
@@ -20,11 +19,8 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        // ➤ MongoDB
-        var mongoConnectionString = builder.Configuration.GetConnectionString("MongoDB") ?? "mongodb://localhost:27017";
-        var mongoClient = new MongoDB.Driver.MongoClient(mongoConnectionString);
-        var mongoDatabase = mongoClient.GetDatabase("RPGArena");
-        builder.Services.AddSingleton<MongoDB.Driver.IMongoDatabase>(mongoDatabase);
+        // ➤ MongoDB via Aspire (connexion automatique depuis l'AppHost)
+        builder.AddMongoDBClient("mongodb");
 
         // ➤ Repositories
         builder.Services.AddScoped<RPGArena.Backend.Repositories.ICombatRepository, RPGArena.Backend.Repositories.MongoCombatRepository>();
@@ -55,15 +51,6 @@ public class Program
         // ➤ BattleArena ne doit PAS être singleton.
         // Elle sera instanciée à chaque combat dans WebSocketHandler
 
-        // ➤ Mode Test
-        var argsList = args.Select(a => a.ToLower()).ToList();
-        if (argsList.Contains("--test") || argsList.Contains("--dev"))
-        {
-            Console.WriteLine("🔧 Mode test activé");
-            await TestBattleScenario.Run();
-            return;
-        }
-
         var app = builder.Build();
         
         // ➤ Middleware global de gestion d'erreurs
@@ -83,6 +70,13 @@ public class Program
         });
         
         app.UseWebSockets();
+
+        // ➤ Health check endpoint
+        app.MapGet("/health", () => Results.Ok(new { 
+            status = "healthy", 
+            service = "rpgarena-backend",
+            timestamp = DateTime.UtcNow 
+        }));
 
         app.Map("/ws", async context =>
         {
@@ -112,6 +106,7 @@ public class Program
 
         Console.WriteLine("✅ Serveur RPG Arena démarré");
         Console.WriteLine("📡 Endpoint WebSocket: ws://localhost:5000/ws");
+        Console.WriteLine("🏥 Health check: http://localhost:5000/health");
         app.Run();
     }
 }

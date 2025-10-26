@@ -7,5 +7,5 @@ namespace Projects;
 [global::System.Diagnostics.DebuggerDisplay("Type = {GetType().Name,nq}, ProjectPath = {ProjectPath}")]
 public class RPGArena_Backend : global::Aspire.Hosting.IProjectMetadata
 {
-    public string ProjectPath => """/mnt/Travail/Projets-Jeux/BR-RPG-V2/RPG-Arena-Backend/New/RPG-Arena/RPGArena.Backend/RPGArena.Backend.csproj""";
+    public string ProjectPath => """/mnt/Travail/Projets/Dev/Serious-Game/Godot/BR-RPG-V2/RPG-Arena-Backend/RPG-Arena/RPGArena.Backend/RPGArena.Backend.csproj""";
 }

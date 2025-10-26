@@ -1,0 +1,71 @@
+# ═══════════════════════════════════════════════════════════════
+# .dockerignore - RPG Arena
+# Exclure les fichiers inutiles du contexte Docker
+# ═══════════════════════════════════════════════════════════════
+
+# Build artifacts
+**/bin/
+**/obj/
+**/out/
+
+# IDE
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.rider/
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Docker
+Dockerfile
+docker-compose*.yml
+.dockerignore
+
+# Documentation
+*.md
+!README.md
+
+# Logs
+logs/
+*.log
+
+# Backups
+backups/
+
+# MongoDB data
+docker/mongodb/data/
+
+# Tests
+**/Tests/
+**/*.Tests/
+
+# Temporary files
+**/tmp/
+**/.tmp/
+*.tmp
+*.temp
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Certificates (générés dynamiquement)
+docker/https/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Scripts
+scripts/

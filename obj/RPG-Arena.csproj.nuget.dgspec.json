@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/mnt/Travail/Projets-Jeux/BR-RPG-V2/RPG-Arena-Backend/New/RPG-Arena/RPG-Arena.csproj": {}
+    "/mnt/Travail/Projets/Dev/Serious-Game/Godot/BR-RPG-V2/RPG-Arena-Backend/RPG-Arena/RPG-Arena.csproj": {}
   },
   "projects": {
-    "/mnt/Travail/Projets-Jeux/BR-RPG-V2/RPG-Arena-Backend/New/RPG-Arena/RPG-Arena.csproj": {
+    "/mnt/Travail/Projets/Dev/Serious-Game/Godot/BR-RPG-V2/RPG-Arena-Backend/RPG-Arena/RPG-Arena.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/mnt/Travail/Projets-Jeux/BR-RPG-V2/RPG-Arena-Backend/New/RPG-Arena/RPG-Arena.csproj",
+        "projectUniqueName": "/mnt/Travail/Projets/Dev/Serious-Game/Godot/BR-RPG-V2/RPG-Arena-Backend/RPG-Arena/RPG-Arena.csproj",
         "projectName": "RPG-Arena",
-        "projectPath": "/mnt/Travail/Projets-Jeux/BR-RPG-V2/RPG-Arena-Backend/New/RPG-Arena/RPG-Arena.csproj",
+        "projectPath": "/mnt/Travail/Projets/Dev/Serious-Game/Godot/BR-RPG-V2/RPG-Arena-Backend/RPG-Arena/RPG-Arena.csproj",
         "packagesPath": "/home/guilhem/.nuget/packages/",
-        "outputPath": "/mnt/Travail/Projets-Jeux/BR-RPG-V2/RPG-Arena-Backend/New/RPG-Arena/obj/",
+        "outputPath": "/mnt/Travail/Projets/Dev/Serious-Game/Godot/BR-RPG-V2/RPG-Arena-Backend/RPG-Arena/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/guilhem/.nuget/NuGet/NuGet.Config"
@@ -20,7 +20,7 @@
           "net9.0"
         ],
         "sources": {
-          "/usr/lib/dotnet/library-packs": {},
+          "/home/guilhem/.dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -39,7 +39,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net9.0": {
@@ -47,16 +47,12 @@
           "dependencies": {
             "Aspire.Dashboard.Sdk.linux-x64": {
               "target": "Package",
-              "version": "[9.0.0, )",
+              "version": "[9.2.0, )",
               "autoReferenced": true
-            },
-            "Aspire.Hosting": {
-              "target": "Package",
-              "version": "[9.2.0, )"
             },
             "Aspire.Hosting.AppHost": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[9.2.0, )"
             },
             "Aspire.Hosting.MongoDB": {
               "target": "Package",
@@ -64,12 +60,8 @@
             },
             "Aspire.Hosting.Orchestration.linux-x64": {
               "target": "Package",
-              "version": "[9.0.0, )",
+              "version": "[9.2.0, )",
               "autoReferenced": true
-            },
-            "Aspire.Hosting.Redis": {
-              "target": "Package",
-              "version": "[9.2.0, )"
             }
           },
           "imports": [
@@ -88,7 +80,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/9.0.108/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/home/guilhem/.dotnet/sdk/9.0.306/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

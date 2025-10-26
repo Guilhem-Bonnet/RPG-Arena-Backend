@@ -1,0 +1,101 @@
+# ═══════════════════════════════════════════════════════════════
+# Docker Compose - Mode Production
+# Configuration optimisée pour la production
+# Usage: docker compose -f docker-compose.yml -f docker-compose.prod.yml up
+# ═══════════════════════════════════════════════════════════════
+
+services:
+  backend:
+    restart: always
+    
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+    
+    # En production, sécurité renforcée
+    security_opt:
+      - no-new-privileges:true
+    
+    # Limites de ressources
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+    
+    # Health check plus strict
+    healthcheck:
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+
+  mongodb:
+    restart: always
+    
+    # En production, ne pas exposer sur l'hôte
+    ports: []
+    
+    # Limites de ressources
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 2G
+        reservations:
+          cpus: '1.0'
+          memory: 1G
+    
+    # Sécurité renforcée
+    security_opt:
+      - no-new-privileges:true
+
+  mongo-express:
+    # En production, désactivé par défaut (utiliser un profil)
+    profiles:
+      - admin
+    
+    # Si activé, restreindre l'accès
+    environment:
+      ME_CONFIG_BASICAUTH: "true"
+
+  # ═══════════════════════════════════════════════════════════════
+  # 📦 Backup automatique (cron)
+  # ═══════════════════════════════════════════════════════════════
+  backup-cron:
+    image: mongo:8.0
+    container_name: rpgarena-backup-cron
+    restart: unless-stopped
+    
+    depends_on:
+      - mongodb
+    
+    environment:
+      MONGO_HOST: mongodb
+      MONGO_PORT: "27017"
+      MONGO_USERNAME: rpgarena_user
+      MONGO_PASSWORD: rpgarena_pass
+      MONGO_DATABASE: RPGArena
+      MONGO_AUTH_SOURCE: RPGArena
+      BACKUP_SCHEDULE: "0 2 * * *"  # Tous les jours à 2h du matin
+    
+    volumes:
+      - ./backups:/backups
+      - ./docker/mongodb/backup-scripts:/scripts:ro
+    
+    networks:
+      - rpgarena-network
+    
+    # Installer cron et planifier
+    entrypoint: /bin/bash
+    command:
+      - -c
+      - |
+        echo "$${BACKUP_SCHEDULE} bash /scripts/backup.sh" > /etc/crontabs/root
+        crond -f -l 2
+    
+    labels:
+      - "project=rpgarena"
+      - "tier=maintenance"
