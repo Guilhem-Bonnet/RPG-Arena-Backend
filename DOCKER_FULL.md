@@ -20,7 +20,7 @@ L'application RPG Arena est entièrement containerisée avec Docker Compose, off
         │  - Combat Engine            │
         │  - Health Check             │
         │  Port: 5000 (HTTP)          │
-        │  Port: 5001 (HTTPS)         │
+        │  Port: 5443 (HTTPS)         │
         └──────────┬──────────────────┘
                    │
                    ▼
@@ -46,12 +46,15 @@ L'application RPG Arena est entièrement containerisée avec Docker Compose, off
 
 ### 1. **backend** - Application principale
 - **Image**: Build depuis `Dockerfile` (multi-stage)
-- **Ports**: 5000 (HTTP), 5001 (HTTPS)
+- **Ports**: 
+  - `5000` (HTTP)
+  - `5443` (HTTPS - mapped from container port 5001)
 - **Dépendances**: MongoDB (health check)
 - **Variables**:
   - `ConnectionStrings__mongodb`: Connection automatique
   - `ASPNETCORE_ENVIRONMENT`: Development/Production
 - **Health Check**: `GET /health` toutes les 30s
+- **Note HTTPS**: Port host 5443 utilisé pour éviter conflits avec le port 5001 système
 
 ### 2. **mongodb** - Base de données
 - **Image**: `mongo:8.0`
@@ -100,7 +103,8 @@ docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
 ```
 
 **Services disponibles**:
-- Backend: http://localhost:5000 et https://localhost:5001
+- Backend HTTP: http://localhost:5000
+- Backend HTTPS: https://localhost:5443 (certificat auto-signé en dev)
 - WebSocket: ws://localhost:5000/ws
 - MongoDB: mongodb://localhost:27017
 - MongoExpress: http://localhost:8081
@@ -175,11 +179,29 @@ BACKUP_SCHEDULE="0 2 * * *"
 ./scripts/generate-cert.sh
 ```
 
+Le script génère un certificat auto-signé pour le développement local. Le backend expose HTTPS sur le port **5443** (mappé depuis le port interne 5001) pour éviter les conflits avec d'autres services système.
+
+**Tester HTTPS**:
+```bash
+# HTTP
+curl http://localhost:5000/health
+
+# HTTPS (avec -k pour ignorer certificat auto-signé)
+curl -k https://localhost:5443/health
+```
+
 **Production** (Let's Encrypt recommandé):
 ```bash
 # Placer le certificat dans docker/https/aspnetcore.pfx
 # Configurer CERTIFICATE_PASSWORD dans .env
 ```
+
+**Note**: Si vous voulez utiliser le port 5001 sur l'hôte au lieu de 5443, modifiez `docker-compose.yml` ligne 35:
+```yaml
+ports:
+  - "5001:5001"  # Au lieu de "5443:5001"
+```
+
 
 ## 📊 Monitoring
 

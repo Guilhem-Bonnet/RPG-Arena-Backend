@@ -32,7 +32,7 @@ services:
     
     ports:
       - "5000:5000"   # HTTP
-      # - "5001:5001"   # HTTPS (désactivé temporairement)
+      - "5443:5001"   # HTTPS (mapped to 5443 on host to avoid conflicts)
     
     volumes:
       # Certificats SSL (à créer en production)
