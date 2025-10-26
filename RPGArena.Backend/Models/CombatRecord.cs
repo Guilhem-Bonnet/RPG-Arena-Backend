@@ -7,7 +7,7 @@ namespace RPGArena.Backend.Models
 {
     public class CombatRecord
     {
-        public string Id { get; set; } // MongoDB's _id
+        public string Id { get; set; } = string.Empty; // MongoDB's _id
         public DateTime StartTime { get; set; } = DateTime.UtcNow;
         public DateTime? EndTime { get; set; }
 
