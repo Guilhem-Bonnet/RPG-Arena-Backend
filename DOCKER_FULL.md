@@ -69,11 +69,15 @@ L'application RPG Arena est entièrement containerisée avec Docker Compose, off
   - Index automatiques
   - Health check avec `mongosh`
 
-### 3. **mongo-express** - Interface d'administration
+### 3. **mongo-express** - Interface d'administration (⚠️ Security)
 - **Image**: `mongo-express`
 - **Port**: 8081
-- **Mode**: Development seulement (production via profile)
-- **Credentials**: admin / pass
+- **Mode**: 
+  - **Development**: Toujours actif
+  - **Production**: ⚠️ **DÉSACTIVÉ par défaut** (profile `admin` requis)
+- **Credentials**: admin / pass (configurable via `.env`)
+- **Activation Production**: `docker compose --profile admin -f docker-compose.yml -f docker-compose.prod.yml up`
+- **Sécurité**: Basic Auth activé, ne PAS exposer publiquement
 
 ### 4. **integration-tests** - Tests (profile: test)
 - **Build**: Image custom avec .NET 9 + MongoDB tools
@@ -308,12 +312,28 @@ docker compose --profile test run --rm integration-tests
 
 1. **Credentials**:
    - ⚠️ Changer tous les mots de passe par défaut
-   - 🔐 Utiliser des secrets Docker ou variables d'environnement sécurisées
+   - 🔐 Utiliser `.env.production` avec mots de passe forts (min 20 caractères)
+   - 🔐 Validation automatique au démarrage (backend refuse de démarrer avec credentials par défaut)
+   - 📖 Voir [SECURITY.md](SECURITY.md) pour guide complet
 
 2. **Réseau**:
-   - ✅ Ne pas exposer MongoDB sur l'hôte
+   - ✅ Ne pas exposer MongoDB sur l'hôte (ports: [] en production)
    - ✅ Utiliser un reverse proxy (Nginx/Traefik) avec SSL/TLS
    - ✅ Configurer un firewall
+
+3. **MongoExpress** (⚠️ CRITICAL):
+   - ❌ **JAMAIS exposer en production** sans protection
+   - ✅ Désactivé par défaut en production (profile `admin` requis)
+   - ✅ Basic Auth activé (ME_CONFIG_BASICAUTH=true)
+   - ⚠️ Si activation temporaire nécessaire:
+     ```bash
+     # Activation temporaire avec profile admin
+     docker compose --profile admin -f docker-compose.yml -f docker-compose.prod.yml up -d
+     
+     # IMPORTANT: Stopper après usage
+     docker compose stop mongo-express
+     ```
+   - 🔐 Alternative recommandée: Utiliser `mongosh` en CLI ou MongoDB Compass avec SSH tunnel
 
 3. **Images**:
    - ✅ Scanner les vulnérabilités: `docker scan rpgarena-backend`

@@ -53,7 +53,10 @@ services:
       - no-new-privileges:true
 
   mongo-express:
-    # En production, désactivé par défaut (utiliser un profil)
+    # ⚠️ PRODUCTION SECURITY: MongoExpress désactivé par défaut
+    # Interface admin exposée = surface d'attaque
+    # Pour activer temporairement (admin uniquement):
+    #   docker compose --profile admin -f docker-compose.yml -f docker-compose.prod.yml up
     profiles:
       - admin
     
